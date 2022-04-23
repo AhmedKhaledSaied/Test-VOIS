@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>NewTest.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+NewTest.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org.example</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.junit.Test</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.openqa.selenium.By</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.openqa.selenium.WebDriver</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.openqa.selenium.WebElement</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.openqa.selenium.chrome.ChromeDriver</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.openqa.selenium.remote.DesiredCapabilities</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.openqa.selenium.support.ui.Select</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Random</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.concurrent.TimeUnit</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">NewTest {</span>
+
+    <span class="s1">@Test()</span>
+    <span class="s0">public void </span><span class="s1">newtest() {</span>
+        <span class="s1">System.setProperty(</span><span class="s2">&quot;webdriver.chrome.driver&quot;</span><span class="s0">, </span><span class="s2">&quot;C:</span><span class="s0">\\</span><span class="s2">Users</span><span class="s0">\\</span><span class="s2">HP</span><span class="s0">\\</span><span class="s2">IdeaProjects</span><span class="s0">\\</span><span class="s2">VOIS</span><span class="s0">\\</span><span class="s2">chromedriver.exe&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">WebDriver driver = </span><span class="s0">new </span><span class="s1">ChromeDriver()</span><span class="s0">;</span>
+        <span class="s3">// Change resolution to 1024x768</span>
+
+        <span class="s1">DesiredCapabilities caps = </span><span class="s0">new </span><span class="s1">DesiredCapabilities()</span><span class="s0">;</span>
+        <span class="s1">caps.setCapability(</span><span class="s2">&quot;resolution&quot;</span><span class="s0">, </span><span class="s2">&quot;1024x768&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">driver.get(</span><span class="s2">&quot;http://automationpractice.com/index.php?controller=authentication&amp;back=my-account&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">WebElement txtbox_username =</span>
+                <span class="s1">driver.findElement(By.id(</span><span class="s2">&quot;email_create&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">Random rand = </span><span class="s0">new </span><span class="s1">Random()</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">x =</span>
+                <span class="s1">rand.nextInt((</span><span class="s4">999 </span><span class="s1">- </span><span class="s4">0</span><span class="s1">) + </span><span class="s4">1</span><span class="s1">) + </span><span class="s4">1</span><span class="s0">;</span>
+        <span class="s1">System.out.println(x)</span><span class="s0">;</span>
+        <span class="s1">String Mail = </span><span class="s2">&quot;te2st&quot; </span><span class="s1">+ x + </span><span class="s2">&quot;@hotmail.com&quot;</span><span class="s0">;</span>
+        <span class="s1">System.out.println(Mail)</span><span class="s0">;</span>
+        <span class="s1">txtbox_username.sendKeys(Mail)</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.name(</span><span class="s2">&quot;SubmitCreate&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+        <span class="s1">driver.manage().timeouts().implicitlyWait(</span><span class="s4">5</span><span class="s0">, </span><span class="s1">TimeUnit.SECONDS)</span><span class="s0">;</span>
+        <span class="s1">WebElement radio_button1 = driver.findElement(By.name(</span><span class="s2">&quot;id_gender&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">radio_button1.click()</span><span class="s0">;</span>
+        <span class="s1">WebElement txtbox_firstname = driver.findElement(By.id(</span><span class="s2">&quot;customer_firstname&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">txtbox_firstname.sendKeys(</span><span class="s2">&quot;Test&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">WebElement txtbox_lastname = driver.findElement(By.id(</span><span class="s2">&quot;customer_lastname&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">txtbox_lastname.sendKeys(</span><span class="s2">&quot;Ahmed&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">WebElement txtbox_email = driver.findElement(By.id(</span><span class="s2">&quot;email&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">WebElement txtbox_password = driver.findElement(By.id(</span><span class="s2">&quot;passwd&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">txtbox_password.sendKeys(</span><span class="s2">&quot;password&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Select object_select = </span><span class="s0">new </span><span class="s1">Select(driver.findElement(By.id(</span><span class="s2">&quot;days&quot;</span><span class="s1">)))</span><span class="s0">;</span>
+        <span class="s1">object_select.selectByIndex(</span><span class="s4">1</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Select object_select2 = </span><span class="s0">new </span><span class="s1">Select(driver.findElement(By.id(</span><span class="s2">&quot;months&quot;</span><span class="s1">)))</span><span class="s0">;</span>
+        <span class="s1">object_select2.selectByIndex(</span><span class="s4">1</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Select object_select3 = </span><span class="s0">new </span><span class="s1">Select(driver.findElement(By.id(</span><span class="s2">&quot;years&quot;</span><span class="s1">)))</span><span class="s0">;</span>
+        <span class="s1">object_select3.selectByIndex(</span><span class="s4">6</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">WebElement txtbox_address = driver.findElement(By.id(</span><span class="s2">&quot;address1&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">txtbox_address.sendKeys(</span><span class="s2">&quot;Nasr City,Abbas el akkad&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">WebElement txtbox_city = driver.findElement(By.id(</span><span class="s2">&quot;city&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">txtbox_city.sendKeys(</span><span class="s2">&quot;Cairo&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Select object_select4 = </span><span class="s0">new </span><span class="s1">Select(driver.findElement(By.id(</span><span class="s2">&quot;id_state&quot;</span><span class="s1">)))</span><span class="s0">;</span>
+        <span class="s1">object_select4.selectByIndex(</span><span class="s4">1</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">WebElement txtbox_postcode = driver.findElement(By.id(</span><span class="s2">&quot;postcode&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">txtbox_postcode.sendKeys(</span><span class="s2">&quot;11765&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Select object_select5 = </span><span class="s0">new </span><span class="s1">Select(driver.findElement(By.id(</span><span class="s2">&quot;id_country&quot;</span><span class="s1">)))</span><span class="s0">;</span>
+        <span class="s1">object_select5.selectByIndex(</span><span class="s4">1</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">WebElement txtbox_number = driver.findElement(By.id(</span><span class="s2">&quot;phone_mobile&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">txtbox_number.sendKeys(</span><span class="s2">&quot;01126415864&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">WebElement txtbox_allias = driver.findElement(By.id(</span><span class="s2">&quot;alias&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">txtbox_allias.sendKeys(</span><span class="s2">&quot;My address&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.name(</span><span class="s2">&quot;submitAccount&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.className(</span><span class="s2">&quot;logout&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+<span class="s3">// Second step</span>
+        <span class="s1">driver.manage().timeouts().implicitlyWait(</span><span class="s4">5</span><span class="s0">, </span><span class="s1">TimeUnit.SECONDS)</span><span class="s0">;</span>
+        <span class="s1">WebElement txtbox_login =</span>
+                <span class="s1">driver.findElement(By.id(</span><span class="s2">&quot;email&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">txtbox_login.sendKeys(Mail)</span><span class="s0">;</span>
+        <span class="s1">WebElement txtbox_loginpw =</span>
+                <span class="s1">driver.findElement(By.id(</span><span class="s2">&quot;passwd&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">txtbox_loginpw.sendKeys(</span><span class="s2">&quot;password&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.name(</span><span class="s2">&quot;SubmitLogin&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+<span class="s3">// Third step</span>
+        <span class="s1">driver.manage().timeouts().implicitlyWait(</span><span class="s4">5</span><span class="s0">, </span><span class="s1">TimeUnit.SECONDS)</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.className(</span><span class="s2">&quot;sf-with-ul&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+        <span class="s1">driver.manage().timeouts().implicitlyWait(</span><span class="s4">5</span><span class="s0">, </span><span class="s1">TimeUnit.SECONDS)</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;/html/body/div/div[2]/div/div[3]/div[1]/div[1]/div/ul/li[1]/a&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s2">subcategories</span><span class="s0">\&quot;</span><span class="s2">]/ul/li[2]/div[1]/a&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+        <span class="s3">//driver.findElement(By.xpath(&quot;//*[@id=\&quot;center_column\&quot;]/ul/li/div/div[2]/div[2]/a[1]/span\n&quot;)).click();</span>
+        <span class="s3">// Forth step</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s2">center_column</span><span class="s0">\&quot;</span><span class="s2">]/ul/li/div/div[1]/div/a[1]/img</span><span class="s0">\n</span><span class="s2">&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+<span class="s3">// Fifth step</span>
+        <span class="s1">driver.manage().timeouts().implicitlyWait(</span><span class="s4">5</span><span class="s0">, </span><span class="s1">TimeUnit.SECONDS)</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s2">add_to_cart</span><span class="s0">\&quot;</span><span class="s2">]/button/span&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+        <span class="s1">driver.manage().window().maximize()</span><span class="s0">;</span>
+        <span class="s1">driver.manage().timeouts().implicitlyWait(</span><span class="s4">5</span><span class="s0">, </span><span class="s1">TimeUnit.SECONDS)</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s2">layer_cart</span><span class="s0">\&quot;</span><span class="s2">]/div[1]/div[2]/div[4]/a/span</span><span class="s0">\n</span><span class="s2">&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s2">center_column</span><span class="s0">\&quot;</span><span class="s2">]/p[2]/a[1]/span&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s2">center_column</span><span class="s0">\&quot;</span><span class="s2">]/form/p/button/span&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+        <span class="s1">driver.manage().timeouts().implicitlyWait(</span><span class="s4">5</span><span class="s0">, </span><span class="s1">TimeUnit.SECONDS)</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s2">cgv</span><span class="s0">\&quot;</span><span class="s2">]&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s2">form</span><span class="s0">\&quot;</span><span class="s2">]/p/button/span</span><span class="s0">\n</span><span class="s2">&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+  <span class="s3">// Sixth step</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s2">HOOK_PAYMENT</span><span class="s0">\&quot;</span><span class="s2">]/div[1]/div/p/a&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s2">cart_navigation</span><span class="s0">\&quot;</span><span class="s2">]/button/span&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+   <span class="s3">// Seventh step</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s2">header</span><span class="s0">\&quot;</span><span class="s2">]/div[2]/div/div/nav/div[1]/a/span</span><span class="s0">\n</span><span class="s2">&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s2">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s2">center_column</span><span class="s0">\&quot;</span><span class="s2">]/div/div[1]/ul/li[1]/a/span&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+
+
+    <span class="s1">}</span>
+
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
